@@ -2,7 +2,7 @@
 
 Executar:
 
-`git clone https://github.com/MatheusNicoski/innova.git`,
+`git clone https://github.com/MatheusNicoski/angular-laravel.git`,
 
 `cd backend`,
 
