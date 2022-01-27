@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="col-md-12">
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      {{ msg }} <i class="fas fa-spinner fa-spin fa-2x"></i>
+    </div>
+
+    <a href="/contact-register" class="nav-link float" routerLink="/contact-register"><i class="fas fa-plus-circle fa-2x"></i></a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of list; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ item.id }}
+        </td>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.phone }}</td>
+        <td>{{ item.cpf }}</td>
+        <td>
+          <a href="/contact-edit" class="pr-2" routerLink="/contact-edit/{{item.id}}"><i class="fa fa-edit"></i></a>
+          <button (click)="delete(item.id)" class="btn text-danger"><i class="fa fa-trash"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

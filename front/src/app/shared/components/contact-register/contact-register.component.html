@@ -1,0 +1,114 @@
+<div class="col-md-12">
+    <div class="card card-container">
+  
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="contact.name"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+  
+          <div class="alert alert-danger mt-3" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors['required']">O campo Nome é obrigatório.</div>
+          </div>
+  
+          <div class="alert alert-danger mt-3" *ngIf="errors?.name && f.submitted">
+            <div *ngIf="errors?.name">
+              {{ errors?.name }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="contact.email"
+            required
+            email
+            #email="ngModel"
+          />
+          
+          <div class="alert alert-danger mt-3" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors['required']">O campo Email é obrigatório.</div>
+            <div *ngIf="email.errors['email']">O campo Email não válido.</div>
+          </div>
+  
+          <div class="alert alert-danger mt-3" *ngIf="errors?.email && f.submitted">
+            <div *ngIf="errors?.email">
+              {{ errors?.email }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cpf"
+            [(ngModel)]="contact.cpf"
+            required
+            #cpf="ngModel"
+            [textMask]="{mask: mask.cpf}"
+          />
+  
+          <div class="alert alert-danger mt-3" *ngIf="cpf.errors && f.submitted">
+            <div *ngIf="cpf.errors['required']">O campo CPF é obrigatório.</div>
+          </div>
+  
+          <div class="alert alert-danger mt-3" *ngIf="errors?.cpf && f.submitted">
+            <div *ngIf="errors?.cpf">
+              {{ errors?.cpf }}
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input
+              type="text"
+              class="form-control"
+              name="phone"
+              [(ngModel)]="contact.phone"
+              required
+              #phone="ngModel"
+              [textMask]="{mask: mask.phone}"
+            />
+
+            <div class="alert alert-danger mt-3" *ngIf="phone.errors && f.submitted">
+              <div *ngIf="phone.errors['required']">O campo Telefone é obrigatório.</div>
+            </div>
+    
+            <div class="alert alert-danger mt-3" *ngIf="errors?.phone && f.submitted">
+              <div *ngIf="errors?.phone">
+                {{ errors?.phone }}
+              </div>
+            </div>
+    
+          </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block">{{ contact.id ? 'Atualizar' : 'Registrar' }}</button>
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        {{ msg }} <i class="fas fa-spinner fa-spin fa-2x"></i>
+      </div>
+    </div>
+  </div>
